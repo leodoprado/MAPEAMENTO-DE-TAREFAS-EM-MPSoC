@@ -3,14 +3,14 @@ var data = require('./AppsDesafioMap.json')
 var tarefas = data.aplicacoes;
 
 function exibe(matriz){
-    console.log('---------------')
+    console.log('Y')
     for(let i = 0; i < linhas; i++){
-        console.log(matriz[i])
+        console.log("| " + matriz[i])
     }
-    console.log('---------------')
+    console.log('--------------> X\n')
 }
 
-// Mapeamento do MPSoC
+// Mapeamento do MPSoC 
 let contMain = 0;
 while(tarefas.length > contMain){
 

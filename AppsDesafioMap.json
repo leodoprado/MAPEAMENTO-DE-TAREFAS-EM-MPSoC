@@ -3,6 +3,8 @@
         {
             "aplicacao": "1",
             "map": ["A","B","C","D"],
+            "linhas": 4,
+            "colunas": 4,
             "grafo_tarefas": [
                 { 
                     "tarefa_origem": "A",
@@ -34,6 +36,8 @@
         {
             "aplicacao": "2",
             "map": ["T","X","W"],
+            "linhas": 3,
+            "colunas": 4,
             "grafo_tarefas": [
                 { 
                     "tarefa_origem": "T",
@@ -60,6 +64,56 @@
         {
             "aplicacao": "3",
             "map": ["G","V","U","P","H","O","Z"],
+            "linhas": 3,
+            "colunas": 4,
+            "grafo_tarefas": [
+                { 
+                    "tarefa_origem": "G",
+                    "tarefa_destino": "V",
+                    "quantidade_pacotes": 1
+                },
+                { 
+                    "tarefa_origem": "U",
+                    "tarefa_destino": "P",
+                    "quantidade_pacotes": 1
+                },
+                { 
+                    "tarefa_origem": "H",
+                    "tarefa_destino": "O",
+                    "quantidade_pacotes": 1
+                },
+                { 
+                    "tarefa_origem": "N",
+                    "tarefa_destino": "Z",
+                    "quantidade_pacotes": 1
+                },
+                { 
+                    "tarefa_origem": "N",
+                    "tarefa_destino": "H",
+                    "quantidade_pacotes": 2
+                },
+                { 
+                    "tarefa_origem": "O",
+                    "tarefa_destino": "P",
+                    "quantidade_pacotes": 3
+                },
+                { 
+                    "tarefa_origem": "U",
+                    "tarefa_destino": "G",
+                    "quantidade_pacotes": 4
+                },
+                { 
+                    "tarefa_origem": "V",
+                    "tarefa_destino": "Z",
+                    "quantidade_pacotes": 5
+                }
+            ]
+        },
+        {
+            "aplicacao": "3",
+            "map": ["A","B"],
+            "linhas": 3,
+            "colunas": 4,
             "grafo_tarefas": [
                 { 
                     "tarefa_origem": "G",

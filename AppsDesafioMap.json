@@ -2,8 +2,8 @@
     "aplicacoes": [
         {
             "aplicacao": "1",
-            "map": ["A","B","C","D"],
-            "linhas": 4,
+            "map": ["A","B","C","D","E","F","G","H","I","J","K","L"],
+            "linhas": 3,
             "colunas": 4,
             "grafo_tarefas": [
                 { 
@@ -35,9 +35,9 @@
         },
         {
             "aplicacao": "2",
-            "map": ["T","X","W"],
+            "map": ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","X","A"],
             "linhas": 5,
-            "colunas": 4,
+            "colunas": 5,
             "grafo_tarefas": [
                 { 
                     "tarefa_origem": "T",
@@ -63,8 +63,8 @@
         },
         {
             "aplicacao": "3",
-            "map": ["G","V","U","P","H","O","Z"],
-            "linhas": 3,
+            "map": ["G","V","U","P","H","O","Z","W"],
+            "linhas": 4,
             "colunas": 4,
             "grafo_tarefas": [
                 { 
@@ -111,7 +111,7 @@
         },
         {
             "aplicacao": "3",
-            "map": ["A","B"],
+            "map": ["A","B","C","D","E"],
             "linhas": 3,
             "colunas": 4,
             "grafo_tarefas": [

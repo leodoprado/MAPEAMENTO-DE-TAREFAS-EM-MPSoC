@@ -4,6 +4,7 @@ var tarefas = data.aplicacoes;
 
 function exibe(matriz) {
     console.log('Y')
+    console.log('|')
     for (let i = 0; i < linhas; i++) {
         console.log("| " + matriz[i])
     }
@@ -32,6 +33,7 @@ while (tarefas.length > contMain) {
     let auxLinha = 0;
     let auxColuna = 0;
 
+    // Algoritmo de Mapeamento Y -> X
     while (map.length > contMap) {
         if (indexMapLinha < contLinhas) {
             matriz[indexMapLinha][indexMapColuna] = map[contMap]
@@ -53,6 +55,25 @@ while (tarefas.length > contMain) {
         }
         contMap++;
     }
+    console.log("=====================================================================\n")
+    console.log("Mapeamento (Y -> X):\n")
     exibe(matriz)
+    console.log("=====================================================================\n")
+    
+    // Algoritmo de transferência de pacotes
+    let tasks = tarefas[contMain].grafo_tarefas
+    let contTasks = 0
+    while(tarefas[contMain].grafo_tarefas.length > contTasks){
+        let source = tarefas[contMain].grafo_tarefas[contTasks].tarefa_origem
+        let target = tarefas[contMain].grafo_tarefas[contTasks].tarefa_destino
+        let contLinhas = 0
+        let contColunas = 0
+
+        //while(matriz[contLinhas][contColunas] !== source)
+        
+        
+        contTasks++;
+    }
+
     contMain++;
 }

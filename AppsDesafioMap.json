@@ -37,7 +37,7 @@
             "aplicacao": "2",
             "map": ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","X","A"],
             "linhas": 5,
-            "colunas": 5,
+            "colunas": 4,
             "grafo_tarefas": [
                 { 
                     "tarefa_origem": "T",

@@ -8,7 +8,8 @@ function exibe(matriz) {
     for (let i = 0; i < linhas; i++) {
         console.log("| " + matriz[i])
     }
-    console.log('--------------> X\n')
+    
+    console.log('---------------> X\n')
 }
 
 // Mapeamento do MPSoC 
@@ -58,22 +59,48 @@ while (tarefas.length > contMain) {
     console.log("=====================================================================\n")
     console.log("Mapeamento (Y -> X):\n")
     exibe(matriz)
-    console.log("=====================================================================\n")
     
-    // Algoritmo de transferência de pacotes
+    /*// Algoritmo de transferência de pacotes
     let tasks = tarefas[contMain].grafo_tarefas
     let contTasks = 0
     while(tarefas[contMain].grafo_tarefas.length > contTasks){
         let source = tarefas[contMain].grafo_tarefas[contTasks].tarefa_origem
         let target = tarefas[contMain].grafo_tarefas[contTasks].tarefa_destino
-        let contLinhas = 0
-        let contColunas = 0
 
-        //while(matriz[contLinhas][contColunas] !== source)
+        // Descobrindo o index do Source
+        let linhaSource = 0;
+        let colunaSource = 0;
+        while(matriz[linhaSource][colunaSource] !== source){
+            if(linhaSource < contLinhas){
+                linhaSource++;
+                if(indexMapLinha === contLinhas) {
+                    auxColuna++;
+                    indexMapColuna = auxColuna;
+                }
+            } else if (colunaSource < contColunas){
+                colunaSource++;
+                if(colunaSource === contColunas){
+                    linhaSource = 0;
+                    contColunas = auxColuna;
+                    contLinhas--;
+                }
+            }
+        }
+
+        // Descobrindo o index do Target
+        let linhaTarget = 0;
+        let colunaTarget = 0;
+        while(matriz[linhaTarget][colunaTarget] !== target){
+            
+        }
+
+        // Percorrendo o caminho
+        while(matriz[sourceLinha][sourceColuna] !== matriz [targetLinha][targetColuna]){
         
-        
+        }
+
         contTasks++;
-    }
+    }*/
 
     contMain++;
 }

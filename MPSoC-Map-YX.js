@@ -9,15 +9,15 @@ function exibe(matriz) {
         console.log("| " + matriz[i])
     }
     
-    console.log('---------------> X\n')
+    console.log('--------------------> X\n')
 }
 
 // Mapeamento do MPSoC 
 let contMain = 0;
 while (tarefas.length > contMain) {
 
-    var linhas = tarefas[contMain].linhas
-    var colunas = tarefas[contMain].colunas
+    var linhas = 8
+    var colunas = 8
 
     var matriz = new Array(linhas)
     for (var i = 0; i < linhas; i++) {
@@ -60,7 +60,7 @@ while (tarefas.length > contMain) {
     console.log("Mapeamento (Y -> X):\n")
     exibe(matriz)
     
-    /*// Algoritmo de transferência de pacotes
+    /* Algoritmo de transferência de pacotes
     let tasks = tarefas[contMain].grafo_tarefas
     let contTasks = 0
     while(tarefas[contMain].grafo_tarefas.length > contTasks){

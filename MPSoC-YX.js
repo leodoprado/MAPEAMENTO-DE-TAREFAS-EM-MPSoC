@@ -14,6 +14,7 @@ testData.TEST.forEach(TEST => {
     
     let arrMap = []
 
+    console.log(TEST)
     console.log(TEST.APP) 
     console.log(TEST.QTD) 
     console.log("\n")
@@ -31,7 +32,13 @@ testData.TEST.forEach(TEST => {
         contTarefas++;
     }
 
-    console.log(arrayMap)
+
+    var arr = []
+    for (let i = 0; i < TEST.QTD; i++){
+        arr.push(arrayMap)
+    }
+
+    console.log(arr)
 
     //////////////////////////
 
@@ -52,7 +59,12 @@ testData.TEST.forEach(TEST => {
     let auxColuna = 0;
     let contMap = 0;
 
+    let maps = parseInt(TEST.QTD)
+   // console.log(arrayMap.length * maps)
+   console.log(arr.length)
+
     while (arrayMap.length > contMap){
+        let contArr = 0;
         if (indexMapLinha < contLinhas) {
             matriz[indexMapLinha][indexMapColuna] = arrayMap[contMap]
             indexMapLinha++;
@@ -75,14 +87,6 @@ testData.TEST.forEach(TEST => {
     }
     exibe(matriz)
 });
-
-/*
-while (testData.TEST.length > contMain){
-
-    console.log(XColunas, YLinhas)
-
-    contMain++;
-}*/
 
 function exibe(matriz) {
     console.log('Y')

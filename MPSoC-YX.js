@@ -34,11 +34,18 @@ testData.TEST.forEach(TEST => {
 
 
     var arr = []
+    let contArr = 0
     for (let i = 0; i < TEST.QTD; i++){
         arr.push(arrayMap)
     }
 
-    console.log(arr)
+    let a = []
+    for (let i = 0; i < TEST.QTD; i++){
+        a.push(...arr[contArr])
+        contArr++;
+    }
+
+    console.log(a)
 
     //////////////////////////
 
@@ -53,20 +60,15 @@ testData.TEST.forEach(TEST => {
     // Algoritmo de mapeamento
     let indexMapLinha = 0
     let indexMapColuna = 0
-    let contLinhas = YLinhas
-    let contColunas = XColunas
+    let contLinhas = 8
+    let contColunas = 8
     let auxLinha = 0;
     let auxColuna = 0;
     let contMap = 0;
 
-    let maps = parseInt(TEST.QTD)
-   // console.log(arrayMap.length * maps)
-   console.log(arr.length)
-
-    while (arrayMap.length > contMap){
-        let contArr = 0;
+    while (a.length > contMap){
         if (indexMapLinha < contLinhas) {
-            matriz[indexMapLinha][indexMapColuna] = arrayMap[contMap]
+            matriz[indexMapLinha][indexMapColuna] = a[contMap]
             indexMapLinha++;
 
             if(indexMapLinha === contLinhas) {
@@ -75,7 +77,7 @@ testData.TEST.forEach(TEST => {
             }
         } else if (indexMapColuna < contColunas) {
             indexMapColuna++
-            matriz[indexMapLinha-1][indexMapColuna-1] = arrayMap[contMap]
+            matriz[indexMapLinha-1][indexMapColuna-1] = a[contMap]
             
             if(indexMapColuna === contColunas) {
                 indexMapLinha = 0;

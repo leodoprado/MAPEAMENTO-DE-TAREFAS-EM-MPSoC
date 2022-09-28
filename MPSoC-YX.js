@@ -1,7 +1,7 @@
 let testData = require('./Teste-TrabalhoMapeamento/TrabalhoMapeamento/Test1.json')
 
-let XColunas = testData.MPSOC_SIZE_X
-let YLinhas = testData.MPSOC_SIZE_Y;
+let XColunas = parseInt(testData.MPSOC_SIZE_X);
+let YLinhas = parseInt(testData.MPSOC_SIZE_Y);
 let Processor = testData.TASKS_PER_PROCESSOR;
 
 console.log(testData)
@@ -49,19 +49,16 @@ testData.TEST.forEach(TEST => {
 
     //////////////////////////
 
-    let YLinhas = testData.MPSOC_SIZE_Y
-    let XColunas = testData.MPSOC_SIZE_X
-
     var matriz = new Array(YLinhas)
     for (var i = 0; i < YLinhas; i++) {
-        matriz[i] = new Array(8).fill(0);
+        matriz[i] = new Array(XColunas).fill(0);
     }
 
     // Algoritmo de mapeamento
     let indexMapLinha = 0
     let indexMapColuna = 0
-    let contLinhas = 8
-    let contColunas = 8
+    let contLinhas = YLinhas
+    let contColunas = XColunas
     let auxLinha = 0;
     let auxColuna = 0;
     let contMap = 0;

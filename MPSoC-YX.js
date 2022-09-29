@@ -56,17 +56,15 @@ testData.TEST.forEach(TEST => {
 
     var matriz = new Array(YLinhas)
     for (var i = 0; i < YLinhas; i++) {
-        matriz[i] = new Array(XColunas).fill(0);
+        matriz[i] = new Array(XColunas).fill("["+0+"]");
     }
 
     //////////////////////////
-    console.log(a.length)
 
     let contArray = 0;
     let AuxProcessor = []
     let ProcessorTask = []
 
-    //console.log(a.length)
     while(a.length >= contArray){
         if(AuxProcessor.length < TasksProcessor){
             AuxProcessor.push(a[contArray])
@@ -78,9 +76,10 @@ testData.TEST.forEach(TEST => {
         contArray++;
     }
 
-    console.log(TasksProcessor)
-    console.log(AuxProcessor.length)
+    //console.log(TasksProcessor)
+    //console.log(AuxProcessor.length)
     console.log(ProcessorTask)
+    
     /////////////////////////
 
     // Algoritmo de mapeamento
@@ -115,8 +114,6 @@ testData.TEST.forEach(TEST => {
     }
     console.log("-------------------------------------{ MAP }-------------------------------------\n")
     exibe(matriz)
-
-    console.log(matriz[0][0])
 });
 
 function exibe(matriz) {

@@ -56,7 +56,9 @@ testData.TEST.forEach(TEST => {
 
     var matriz = new Array(YLinhas)
     for (var i = 0; i < YLinhas; i++) {
-        matriz[i] = new Array(XColunas).fill("["+0+"]");
+        for (var j = 0; j < TasksProcessor; j++){
+            matriz[i] = new Array(XColunas).fill("["+generateZero(TasksProcessor)+"]");
+        }
     }
 
     //////////////////////////
@@ -126,10 +128,6 @@ function exibe(matriz) {
     console.log('--------------------------------------> X\n')
 }
 
-function CreateMatriz(rows, columns) {
-    var matriz = new Array(rows);
-    for (let i = 0; i < rows; i++) {
-        matriz[i] = new Array(columns).fill(0);
-    }
-    return exibe(matriz);
- }
+function generateZero(totalElementos){
+    return Array(totalElementos).fill(0);
+}

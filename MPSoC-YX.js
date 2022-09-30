@@ -50,15 +50,18 @@ testData.TEST.forEach(TEST => {
         a.push(...arr[contArr])
         contArr++;
     }
+
+    while(a.length % TasksProcessor !== 0){
+        a.push(0)
+    }
+    
     console.log(a)
 
     //////////////////////////
 
     var matriz = new Array(YLinhas)
     for (var i = 0; i < YLinhas; i++) {
-        for (var j = 0; j < TasksProcessor; j++){
-            matriz[i] = new Array(XColunas).fill("["+generateZero(TasksProcessor)+"]");
-        }
+        matriz[i] = new Array(XColunas).fill("["+generateZero(TasksProcessor)+"]");
     }
 
     //////////////////////////
@@ -70,7 +73,7 @@ testData.TEST.forEach(TEST => {
     while(a.length >= contArray){
         if(AuxProcessor.length < TasksProcessor){
             AuxProcessor.push(a[contArray])
-        } else {
+        } else if(AuxProcessor.length == TasksProcessor){
             ProcessorTask.push(AuxProcessor)
             AuxProcessor = []
             continue;

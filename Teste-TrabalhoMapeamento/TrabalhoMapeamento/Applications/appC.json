@@ -24,6 +24,11 @@
             "tarefa_origem": "A",
             "tarefa_destino": "A",
             "quantidade_pacotes": 1
+        },
+        { 
+            "tarefa_origem": "E",
+            "tarefa_destino": "E",
+            "quantidade_pacotes": 1
         }
     ]
 }

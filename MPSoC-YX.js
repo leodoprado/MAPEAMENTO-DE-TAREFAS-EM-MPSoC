@@ -8,7 +8,7 @@ console.log(testData)
 
 let contMain = 0;
 
-// Acessando posições das tasks para mapear
+// Acessando posições das tasks
 testData.TEST.forEach(TEST => {
     console.log("\n_________________________________________________________________________________________________________________________________\n")
     
@@ -119,6 +119,28 @@ testData.TEST.forEach(TEST => {
     }
     console.log("-------------------------------------{ MAP }-------------------------------------\n")
     exibe(matriz)
+    
+    // Procurando o index do source
+    let linhaSource = 0;
+    let colunaSource = 0;
+    let contSearch = 0;
+    while (Application.grafo_tarefas.length > contSearch){
+        let sourceLinhaIndex, sourceColunaIndex, targetLinhaIndex, targetColunaIndex;
+        let source = Application.grafo_tarefas[contSearch].tarefa_origem
+        let target = Application.grafo_tarefas[contSearch].tarefa_destino
+        let packages = Application.grafo_tarefas[contSearch].quantidade_pacotes
+        
+        console.log(source, target, packages)
+        /*while (matriz[linhaSource][colunaSource] !== source){
+
+        }*/
+
+        contSearch++;
+    }
+
+    console.log("----------------------------------{ HEAT MAP }----------------------------------\n")
+
+    console.log("* Desenvolvendo *")
 });
 
 function exibe(matriz) {
@@ -128,7 +150,7 @@ function exibe(matriz) {
         console.log("| " + matriz[i])
     }
     
-    console.log('--------------------------------------> X\n')
+    console.log('-------------------------------------------------------------------------------> X\n')
 }
 
 function generateZero(totalElementos){

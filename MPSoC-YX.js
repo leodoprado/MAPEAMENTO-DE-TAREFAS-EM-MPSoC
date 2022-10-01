@@ -12,7 +12,7 @@ let contMain = 0;
 testData.TEST.forEach(TEST => {
     console.log("\n_________________________________________________________________________________________________________________________________\n")
     
-    console.log("-------------------------------------{ TASKS }-------------------------------------\n")
+    console.log("----------------------------------{ TASKS }-------------------------------------\n")
 
     let arrMap = []
 
@@ -121,26 +121,40 @@ testData.TEST.forEach(TEST => {
     exibe(matriz)
     
     // Procurando o index do source
+    var matrizHeat = new Array(YLinhas)
+    for(var i = 0; i < YLinhas; i++){
+        matrizHeat[i] = new Array(XColunas).fill(0);
+    }   
     let linhaSource = 0;
     let colunaSource = 0;
     let contSearch = 0;
+    let contSearchTask = 0;
+    let contSearchProcessor = 0;
     while (Application.grafo_tarefas.length > contSearch){
-        let sourceLinhaIndex, sourceColunaIndex, targetLinhaIndex, targetColunaIndex;
+        let sourceIndex, targetIndex;
         let source = Application.grafo_tarefas[contSearch].tarefa_origem
         let target = Application.grafo_tarefas[contSearch].tarefa_destino
         let packages = Application.grafo_tarefas[contSearch].quantidade_pacotes
         
         console.log(source, target, packages)
-        /*while (matriz[linhaSource][colunaSource] !== source){
-
-        }*/
-
+        let linhaSource = 0;
+        let colunaSource = 0;
+        let processorSource = 1
+        while(ProcessorTask.length > contSearchProcessor){
+            while(ProcessorTask[contSearchProcessor].length > contSearchTask){
+                if(ProcessorTask[contSearchProcessor][contSearchTask] === source){
+                    sourceIndex = contSearchTask
+                }
+                contSearchTask++;
+            }
+            contSearchProcessor++;
+        }
         contSearch++;
     }
 
     console.log("----------------------------------{ HEAT MAP }----------------------------------\n")
 
-    console.log("* Desenvolvendo *")
+    exibe(matrizHeat)
 });
 
 function exibe(matriz) {

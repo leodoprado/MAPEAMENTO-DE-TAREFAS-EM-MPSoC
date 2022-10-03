@@ -61,7 +61,7 @@ testData.TEST.forEach(TEST => {
 
     var matriz = new Array(YLinhas)
     for (var i = 0; i < YLinhas; i++) {
-        matriz[i] = new Array(XColunas).fill("["+generateZero(TasksProcessor)+"]");
+        matriz[i] = new Array(XColunas).fill(Array.from(generateZero(TasksProcessor)));
     }
 
     //////////////////////////
@@ -98,7 +98,7 @@ testData.TEST.forEach(TEST => {
 
     while (ProcessorTask.length > contMap){
         if (indexMapLinha < contLinhas) {
-            matriz[indexMapLinha][indexMapColuna] = "["+ProcessorTask[contMap]+"]"
+            matriz[indexMapLinha][indexMapColuna] = ProcessorTask[contMap] 
             indexMapLinha++;
 
             if(indexMapLinha === contLinhas) {
@@ -107,7 +107,7 @@ testData.TEST.forEach(TEST => {
             }
         } else if (indexMapColuna < contColunas) {
             indexMapColuna++
-            matriz[indexMapLinha-1][indexMapColuna-1] = "["+ProcessorTask[contMap]+"]"
+            matriz[indexMapLinha-1][indexMapColuna-1] = ProcessorTask[contMap]
             
             if(indexMapColuna === contColunas) {
                 indexMapLinha = 0;
@@ -118,32 +118,40 @@ testData.TEST.forEach(TEST => {
         contMap++;
     }
     console.log("-------------------------------------{ MAP }-------------------------------------\n")
-    exibe(matriz)
+    console.log(matriz)
     
     // Procurando o index do source
     var matrizHeat = new Array(YLinhas)
     for(var i = 0; i < YLinhas; i++){
         matrizHeat[i] = new Array(XColunas).fill(0);
     }   
-    let linhaSource = 0;
-    let colunaSource = 0;
-    let contSearch = 0;
-    let contSearchTask = 0;
-    let contSearchProcessor = 0;
+    var linhaSource = 0;
+    var colunaSource = 0;
+    var contSearch = 0;
+    var contSearchTask = 0;
+    var contSearchProcessor = 0;
     while (Application.grafo_tarefas.length > contSearch){
-        let sourceIndex, targetIndex;
+        var sourceIndex, targetIndex;
         let source = Application.grafo_tarefas[contSearch].tarefa_origem
         let target = Application.grafo_tarefas[contSearch].tarefa_destino
         let packages = Application.grafo_tarefas[contSearch].quantidade_pacotes
         
-        console.log(source, target, packages)
+        console.log("--------------> "+contSearch)
+        console.log("Source: "+source)
+        console.log("Target: "+target)
+        console.log("Packages: "+packages)
         let linhaSource = 0;
         let colunaSource = 0;
-        let processorSource = 1
+        let processorSource = 0
+
         while(ProcessorTask.length > contSearchProcessor){
             while(ProcessorTask[contSearchProcessor].length > contSearchTask){
                 if(ProcessorTask[contSearchProcessor][contSearchTask] === source){
-                    sourceIndex = contSearchTask
+                    sourceIndex = contSearchProcessor
+                    contSearchProcessor++
+                    continue
+                } else if(ProcessorTask[contSearchProcessor][contSearchTask] === target){
+                    targetIndex = contSearchProcessor
                 }
                 contSearchTask++;
             }
@@ -154,7 +162,8 @@ testData.TEST.forEach(TEST => {
 
     console.log("----------------------------------{ HEAT MAP }----------------------------------\n")
 
-    exibe(matrizHeat)
+    console.log(matriz[0][1])
+    console.log(typeof matriz[0][1])
 });
 
 function exibe(matriz) {

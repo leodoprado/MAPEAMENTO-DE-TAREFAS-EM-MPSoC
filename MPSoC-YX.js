@@ -126,7 +126,6 @@ testData.TEST.forEach(TEST => {
 
     /////////////////////////
 
-    // Identificando o index do Source
     var linhaSource = 0;
     var colunaSource = 0;
     var contSearch = 0;
@@ -138,27 +137,29 @@ testData.TEST.forEach(TEST => {
         var target = Application.grafo_tarefas[contSearch].tarefa_destino
         var packages = Application.grafo_tarefas[contSearch].quantidade_pacotes
         
-        //console.log("--------------> "+contSearch)
-        //console.log("Source: "+source)
-        //console.log("Target: "+target)
-        //console.log("Packages: "+packages)
-        let linhaSource = 0;
-        let colunaSource = 0;
-        let processorSource = 0
+        var linhaSource = 0;
+        var colunaSource = 0;
+        var sourceLinhaIndex, sourceColunaIndex, targetLinhaIndex, targetColunaIndex;
 
-        /*while(ProcessorTask.length > contSearchProcessor){
-            while(ProcessorTask[contSearchProcessor].length > contSearchTask){
-                if(ProcessorTask[contSearchProcessor][contSearchTask] === source){
-                    sourceIndex = contSearchProcessor
-                    contSearchProcessor++
-                    continue
-                } else if(ProcessorTask[contSearchProcessor][contSearchTask] === target){
-                    targetIndex = contSearchProcessor
-                }
-                contSearchTask++;
+        var linhaTarget = 0;
+        var colunaTarget = 0;
+        var processorSource = 0
+        var processorTarget = 0
+        var contSource = 0
+        var contTarget = 0
+        var contIndex = 0
+
+        // Identificando o index do Source
+        while(matriz[linhaSource][colunaSource].length > contIndex){
+            if(matriz[linhaSource][colunaSource][contIndex] === source){
+                console.log("\nAchei o SOURCE: "+source)
+                console.log("Linha do SOURCE: "+linhaSource)
+                console.log("Coluna do SOURCE: "+colunaSource)
+                console.log("Processor do SOURCE: "+contIndex)
             }
-            contSearchProcessor++;
-        }*/
+            contIndex++;
+        }
+
         contSearch++;
     }
     console.log("\n")
@@ -167,7 +168,7 @@ testData.TEST.forEach(TEST => {
 
     // Exibindo o mapa de calor
     console.log("-----| HEAT MAP |------------------------------------------------------------------------------------>\n")
-
+    console.log(Application.grafo_tarefas.length)
     exibe(matrizHeat)
 });
 

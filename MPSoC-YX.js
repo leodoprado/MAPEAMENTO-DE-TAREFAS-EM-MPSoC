@@ -118,7 +118,7 @@ testData.TEST.forEach(TEST => {
         contMap++;
     }
     console.log("-------------------------------------{ MAP }-------------------------------------\n")
-    console.log(matriz)
+    exibe(matriz)
     
     // Procurando o index do source
     var matrizHeat = new Array(YLinhas)
@@ -144,7 +144,7 @@ testData.TEST.forEach(TEST => {
         let colunaSource = 0;
         let processorSource = 0
 
-        while(ProcessorTask.length > contSearchProcessor){
+        /*while(ProcessorTask.length > contSearchProcessor){
             while(ProcessorTask[contSearchProcessor].length > contSearchTask){
                 if(ProcessorTask[contSearchProcessor][contSearchTask] === source){
                     sourceIndex = contSearchProcessor
@@ -156,24 +156,27 @@ testData.TEST.forEach(TEST => {
                 contSearchTask++;
             }
             contSearchProcessor++;
-        }
+        }*/
         contSearch++;
     }
 
     console.log("----------------------------------{ HEAT MAP }----------------------------------\n")
 
-    console.log(matriz[0][1])
-    console.log(typeof matriz[0][1])
+    exibe(matrizHeat)
+
+    console.log(matriz[0][0].length)
+    console.log(matriz[1][0][0])
 });
 
 function exibe(matriz) {
-    console.log('Y')
-    console.log('|')
+    //console.log('Y')
+    //console.log('|')
     for (let i = 0; i < YLinhas; i++) {
-        console.log("| " + matriz[i])
+        for (let j = 0; j < XColunas; j++){
+            process.stdout.write("[" + matriz[i][j] + "]")
+        }
+        console.log("")
     }
-    
-    console.log('-------------------------------------------------------------------------------> X\n')
 }
 
 function generateZero(totalElementos){

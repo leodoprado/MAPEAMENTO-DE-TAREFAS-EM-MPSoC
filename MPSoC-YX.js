@@ -84,13 +84,13 @@ testData.TEST.forEach(TEST => {
     /////////////////////////
 
     // Algoritmo de mapeamento
-    let indexMapLinha = 0
-    let indexMapColuna = 0
-    let contLinhas = YLinhas
-    let contColunas = XColunas
-    let auxLinha = 0;
-    let auxColuna = 0;
-    let contMap = 0;
+    var indexMapLinha = 0
+    var indexMapColuna = 0
+    var contLinhas = YLinhas
+    var contColunas = XColunas
+    var auxLinha = 0;
+    var auxColuna = 0;
+    var contMap = 0;
 
     while (ProcessorTask.length > contMap){
         if (indexMapLinha < contLinhas) {
@@ -161,13 +161,34 @@ testData.TEST.forEach(TEST => {
                     linhaSource++
                     contIndex = 0
                 }
-                
+
                 contIndex = 0
                 break
             } else if (matriz[linhaSource][colunaSource].length == contIndex && matriz[linhaSource][colunaSource][contIndex] !== source){
                 contIndex = 0
                 linhaSource++
-            }
+            } 
+            contIndex++;
+        }
+
+        while(matriz[linhaTarget][colunaTarget].length >= contIndex){
+            if(matriz[linhaTarget][colunaTarget][contIndex] === target){
+                console.log("\nAchei o TARGET: "+target)
+                console.log("Linha do TARGET: "+linhaTarget)
+                console.log("Coluna do TARGET: "+colunaTarget)
+                console.log("Processor do TARGET: "+contIndex)
+
+                if(TEST.QTD > 1){
+                    linhaTarget++
+                    contIndex = 0
+                }
+
+                contIndex = 0
+                break
+            } else if (matriz[linhaTarget][colunaTarget].length == contIndex && matriz[linhaTarget][colunaTarget][contIndex] !== source){
+                contIndex = 0
+                linhaTarget++
+            } 
             contIndex++;
         }
 
@@ -179,7 +200,6 @@ testData.TEST.forEach(TEST => {
 
     // Exibindo o mapa de calor
     console.log("-----| HEAT MAP |------------------------------------------------------------------------------------>\n")
-    console.log(TEST.QTD)
     exibe(matrizHeat)
 });
 

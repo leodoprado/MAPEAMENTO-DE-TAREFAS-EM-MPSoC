@@ -6,23 +6,26 @@ let TasksProcessor = parseInt(testData.TASKS_PER_PROCESSOR);
 
 console.log(testData)
 
-let contMain = 0;
-
 // Acessando posições das tasks
 testData.TEST.forEach(TEST => {
     console.log("\n_________________________________________________________________________________________________________________________________\n")
     
-    console.log("----------------------------------{ TASKS }-------------------------------------\n")
+    console.log("-----| TASKS |---------------------------------------------------------------------------------------->\n")
 
     let arrMap = []
 
-    console.log(TEST)
-    //console.log(TEST.APP) 
-    //console.log(TEST.QTD) 
-    console.log("\n")
+    console.log("Application: "+TEST.APP+" >>>>> "+TEST.QTD+"x\n")
     
     let Application = require(`./Teste-TrabalhoMapeamento/TrabalhoMapeamento/Applications/${TEST.APP}`)
-    console.log(Application)
+    
+    let cont = 0
+    Application.grafo_tarefas.forEach(tarefas => {
+        cont++;
+        console.log("------------------> "+cont)
+        console.log("Source: "+tarefas.tarefa_origem)
+        console.log("Target: "+tarefas.tarefa_destino)
+        console.log("Packages: "+tarefas.quantidade_pacotes)
+    })
     console.log("\n")
 
     // Filtrando o array de tarefas para mapear
@@ -41,9 +44,6 @@ testData.TEST.forEach(TEST => {
         arr.push(arrayMap)
     }
 
-    //console.log(arr)
-    //console.log(arr.length)
-
     // Unindo os arrays de tasks
     let a = []
     for (let i = 0; i < TEST.QTD; i++){
@@ -54,18 +54,18 @@ testData.TEST.forEach(TEST => {
     while(a.length % TasksProcessor !== 0){
         a.push(0)
     }
-    
-    console.log(a)
 
     //////////////////////////
 
+    // Gerando a matriz e preenchendo com zeros
     var matriz = new Array(YLinhas)
     for (var i = 0; i < YLinhas; i++) {
-        matriz[i] = new Array(XColunas).fill(Array.from(generateZero(TasksProcessor)));
+        matriz[i] = new Array(XColunas).fill(generateZero(TasksProcessor));
     }
 
     //////////////////////////
 
+    // Divisão das tasks por processador
     let contArray = 0;
     let AuxProcessor = []
     let ProcessorTask = []
@@ -80,10 +80,6 @@ testData.TEST.forEach(TEST => {
         }
         contArray++;
     }
-
-    //console.log(TasksProcessor)
-    //console.log(AuxProcessor.length)
-    console.log(ProcessorTask)
     
     /////////////////////////
 
@@ -117,14 +113,20 @@ testData.TEST.forEach(TEST => {
         }
         contMap++;
     }
-    console.log("-------------------------------------{ MAP }-------------------------------------\n")
+    console.log("-----| MAP |----------------------------------------------------------------------------------------->\n")
     exibe(matriz)
     
-    // Procurando o index do source
+    /////////////////////////
+
+    // Gerando o mapa de calor
     var matrizHeat = new Array(YLinhas)
     for(var i = 0; i < YLinhas; i++){
         matrizHeat[i] = new Array(XColunas).fill(0);
     }   
+
+    /////////////////////////
+
+    // Identificando o index do Source
     var linhaSource = 0;
     var colunaSource = 0;
     var contSearch = 0;
@@ -132,14 +134,14 @@ testData.TEST.forEach(TEST => {
     var contSearchProcessor = 0;
     while (Application.grafo_tarefas.length > contSearch){
         var sourceIndex, targetIndex;
-        let source = Application.grafo_tarefas[contSearch].tarefa_origem
-        let target = Application.grafo_tarefas[contSearch].tarefa_destino
-        let packages = Application.grafo_tarefas[contSearch].quantidade_pacotes
+        var source = Application.grafo_tarefas[contSearch].tarefa_origem
+        var target = Application.grafo_tarefas[contSearch].tarefa_destino
+        var packages = Application.grafo_tarefas[contSearch].quantidade_pacotes
         
-        console.log("--------------> "+contSearch)
-        console.log("Source: "+source)
-        console.log("Target: "+target)
-        console.log("Packages: "+packages)
+        //console.log("--------------> "+contSearch)
+        //console.log("Source: "+source)
+        //console.log("Target: "+target)
+        //console.log("Packages: "+packages)
         let linhaSource = 0;
         let colunaSource = 0;
         let processorSource = 0
@@ -159,18 +161,17 @@ testData.TEST.forEach(TEST => {
         }*/
         contSearch++;
     }
+    console.log("\n")
 
-    console.log("----------------------------------{ HEAT MAP }----------------------------------\n")
+    /////////////////////////
+
+    // Exibindo o mapa de calor
+    console.log("-----| HEAT MAP |------------------------------------------------------------------------------------>\n")
 
     exibe(matrizHeat)
-
-    console.log(matriz[0][0].length)
-    console.log(matriz[1][0][0])
 });
 
 function exibe(matriz) {
-    //console.log('Y')
-    //console.log('|')
     for (let i = 0; i < YLinhas; i++) {
         for (let j = 0; j < XColunas; j++){
             process.stdout.write("[" + matriz[i][j] + "]")

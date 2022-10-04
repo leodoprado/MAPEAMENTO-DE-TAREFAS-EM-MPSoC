@@ -133,6 +133,7 @@ testData.TEST.forEach(TEST => {
     var contSearchProcessor = 0;
     var linhaSource = 0;
     var colunaSource = 0;
+    console.log("\n----- Descrição do HEAT MAP -----")
     while (Application.grafo_tarefas.length > contSearch){
         var sourceIndex, targetIndex;
         var source = Application.grafo_tarefas[contSearch].tarefa_origem
@@ -143,11 +144,32 @@ testData.TEST.forEach(TEST => {
 
         var linhaTarget = 0;
         var colunaTarget = 0;
-        var processorSource = 0
-        var processorTarget = 0
-        var contSource = 0
-        var contTarget = 0
         var contIndex = 0
+        var auxY = YLinhas
+        var auxX = XColunas
+        let contProcessorTask = 0
+        let contProcessor = 0
+
+        /*while(ProcessorTask.length > contProcessorTask){
+            while(ProcessorTask[contProcessorTask].length > contProcessor){
+                console.log(ProcessorTask[contProcessorTask][contProcessor])
+                if(ProcessorTask[contProcessorTask][contProcessor] === source){
+                    console.log("esta aqui source: "+source)
+                    if(TEST.QTD > 1){
+                        contProcessorTask++
+                    }
+                    contProcessor++;
+                } else if(ProcessorTask[contProcessorTask][contProcessor] === target){
+                    console.log("esta aqui target:"+target)
+                    if(TEST.QTD > 1){
+                        contProcessorTask++
+                    }
+                    contProcessor++;
+                }
+                contProcessor++;
+            }
+            contProcessorTask++;
+        }*/
 
         // Identificando o index do Source
         while(matriz[linhaSource][colunaSource].length >= contIndex){
@@ -171,7 +193,9 @@ testData.TEST.forEach(TEST => {
             contIndex++;
         }
 
-        while(matriz[linhaTarget][colunaTarget].length >= contIndex){
+        linhaTarget = linhaSource
+
+        while(matriz[linhaTarget][colunaTarget].length >= contIndex && matriz[linhaTarget][colunaTarget][contIndex] !== target){
             if(matriz[linhaTarget][colunaTarget][contIndex] === target){
                 console.log("\nAchei o TARGET: "+target)
                 console.log("Linha do TARGET: "+linhaTarget)
@@ -185,13 +209,13 @@ testData.TEST.forEach(TEST => {
 
                 contIndex = 0
                 break
-            } else if (matriz[linhaTarget][colunaTarget].length == contIndex && matriz[linhaTarget][colunaTarget][contIndex] !== source){
+            } else if (matriz[linhaTarget][colunaTarget].length === contIndex && matriz[linhaTarget][colunaTarget][contIndex] !== source){
                 contIndex = 0
                 linhaTarget++
             } 
             contIndex++;
         }
-
+        console.log("---------------------------")
         contSearch++;
     }
     console.log("\n")

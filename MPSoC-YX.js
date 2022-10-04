@@ -131,14 +131,14 @@ testData.TEST.forEach(TEST => {
     var contSearch = 0;
     var contSearchTask = 0;
     var contSearchProcessor = 0;
+    var linhaSource = 0;
+    var colunaSource = 0;
     while (Application.grafo_tarefas.length > contSearch){
         var sourceIndex, targetIndex;
         var source = Application.grafo_tarefas[contSearch].tarefa_origem
         var target = Application.grafo_tarefas[contSearch].tarefa_destino
         var packages = Application.grafo_tarefas[contSearch].quantidade_pacotes
         
-        var linhaSource = 0;
-        var colunaSource = 0;
         var sourceLinhaIndex, sourceColunaIndex, targetLinhaIndex, targetColunaIndex;
 
         var linhaTarget = 0;
@@ -150,12 +150,23 @@ testData.TEST.forEach(TEST => {
         var contIndex = 0
 
         // Identificando o index do Source
-        while(matriz[linhaSource][colunaSource].length > contIndex){
+        while(matriz[linhaSource][colunaSource].length >= contIndex){
             if(matriz[linhaSource][colunaSource][contIndex] === source){
                 console.log("\nAchei o SOURCE: "+source)
                 console.log("Linha do SOURCE: "+linhaSource)
                 console.log("Coluna do SOURCE: "+colunaSource)
                 console.log("Processor do SOURCE: "+contIndex)
+
+                if(TEST.QTD > 1){
+                    linhaSource++
+                    contIndex = 0
+                }
+                
+                contIndex = 0
+                break
+            } else if (matriz[linhaSource][colunaSource].length == contIndex && matriz[linhaSource][colunaSource][contIndex] !== source){
+                contIndex = 0
+                linhaSource++
             }
             contIndex++;
         }
@@ -168,7 +179,7 @@ testData.TEST.forEach(TEST => {
 
     // Exibindo o mapa de calor
     console.log("-----| HEAT MAP |------------------------------------------------------------------------------------>\n")
-    console.log(Application.grafo_tarefas.length)
+    console.log(TEST.QTD)
     exibe(matrizHeat)
 });
 

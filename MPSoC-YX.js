@@ -150,70 +150,59 @@ testData.TEST.forEach(TEST => {
         let contProcessorTask = 0
         let contProcessor = 0
 
-        /*while(ProcessorTask.length > contProcessorTask){
-            while(ProcessorTask[contProcessorTask].length > contProcessor){
-                console.log(ProcessorTask[contProcessorTask][contProcessor])
-                if(ProcessorTask[contProcessorTask][contProcessor] === source){
-                    console.log("esta aqui source: "+source)
-                    if(TEST.QTD > 1){
-                        contProcessorTask++
-                    }
-                    contProcessor++;
-                } else if(ProcessorTask[contProcessorTask][contProcessor] === target){
-                    console.log("esta aqui target:"+target)
-                    if(TEST.QTD > 1){
-                        contProcessorTask++
-                    }
-                    contProcessor++;
-                }
-                contProcessor++;
-            }
-            contProcessorTask++;
-        }*/
-
         // Identificando o index do Source
-        while(matriz[linhaSource][colunaSource].length >= contIndex){
-            if(matriz[linhaSource][colunaSource][contIndex] === source){
-                console.log("\nAchei o SOURCE: "+source)
-                console.log("Linha do SOURCE: "+linhaSource)
-                console.log("Coluna do SOURCE: "+colunaSource)
-                console.log("Processor do SOURCE: "+contIndex)
-
-                if(TEST.QTD > 1){
-                    linhaSource++
+        if(linhaSource <= auxY){
+            while(matriz[linhaSource][colunaSource].length >= contIndex){
+                if(matriz[linhaSource][colunaSource][contIndex] === source){
+                    console.log("\nAchei o SOURCE: "+source)
+                    console.log("Linha do SOURCE: "+linhaSource)
+                    console.log("Coluna do SOURCE: "+colunaSource)
+                    console.log("Processor do SOURCE: "+contIndex)
+    
+                    if(TEST.QTD > 1){
+                        linhaSource++
+                        contIndex = 0
+                    }
+    
                     contIndex = 0
-                }
-
-                contIndex = 0
-                break
-            } else if (matriz[linhaSource][colunaSource].length == contIndex && matriz[linhaSource][colunaSource][contIndex] !== source){
-                contIndex = 0
-                linhaSource++
-            } 
-            contIndex++;
+                    break
+                } else if (matriz[linhaSource][colunaSource].length == contIndex && matriz[linhaSource][colunaSource][contIndex] !== source){
+                    contIndex = 0
+                    linhaSource++
+                } 
+                contIndex++;
+            }
+        } else if (linhaSource === auxY){
+            auxY--
+            linhaSource--
+            colunaSource++;
         }
 
-        linhaTarget = linhaSource
-
-        while(matriz[linhaTarget][colunaTarget].length >= contIndex && matriz[linhaTarget][colunaTarget][contIndex] !== target){
-            if(matriz[linhaTarget][colunaTarget][contIndex] === target){
-                console.log("\nAchei o TARGET: "+target)
-                console.log("Linha do TARGET: "+linhaTarget)
-                console.log("Coluna do TARGET: "+colunaTarget)
-                console.log("Processor do TARGET: "+contIndex)
-
-                if(TEST.QTD > 1){
-                    linhaTarget++
+        if(linhaTarget < auxY){
+            while(matriz[linhaTarget][colunaTarget].length >= contIndex){
+                if(matriz[linhaTarget][colunaTarget][contIndex] === target){
+                    console.log("\nAchei o TARGET: "+target)
+                    console.log("Linha do TARGET: "+linhaTarget)
+                    console.log("Coluna do TARGET: "+colunaTarget)
+                    console.log("Processor do TARGET: "+contIndex)
+    
+                    if(TEST.QTD > 1){
+                        linhaTarget++
+                        contIndex = 0
+                    }
+    
                     contIndex = 0
-                }
-
-                contIndex = 0
-                break
-            } else if (matriz[linhaTarget][colunaTarget].length === contIndex && matriz[linhaTarget][colunaTarget][contIndex] !== source){
-                contIndex = 0
-                linhaTarget++
-            } 
-            contIndex++;
+                    break
+                } else if (matriz[linhaTarget][colunaTarget].length === contIndex && matriz[linhaTarget][colunaTarget][contIndex] !== source){
+                    contIndex = 0
+                    linhaTarget++
+                } 
+                contIndex++;
+            }
+        } else if (linhaTarget === auxY){
+            auxY--
+            linhaTarget--
+            colunaTarget++
         }
         console.log("---------------------------")
         contSearch++;

@@ -1,4 +1,4 @@
-let testData = require('./Teste-TrabalhoMapeamento/TrabalhoMapeamento/Test1.json')
+let testData = require('./Testes/TrabalhoMapeamento/Test1.json')
 
 let XColunas = parseInt(testData.MPSOC_SIZE_X);
 let YLinhas = parseInt(testData.MPSOC_SIZE_Y);
@@ -16,7 +16,7 @@ testData.TEST.forEach(TEST => {
 
     console.log("Application: "+TEST.APP+" >>>>> "+TEST.QTD+"x\n")
     
-    let Application = require(`./Teste-TrabalhoMapeamento/TrabalhoMapeamento/Applications/${TEST.APP}`)
+    let Application = require(`./Testes/TrabalhoMapeamento/Applications/${TEST.APP}`)
     
     let cont = 0
     Application.grafo_tarefas.forEach(tarefas => {
